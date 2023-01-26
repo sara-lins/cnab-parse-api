@@ -47,7 +47,7 @@ MY_APPS = [
     "transactions"
 ]
 
-INSTALLED_APPS = DJANGO_APPS + MY_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
