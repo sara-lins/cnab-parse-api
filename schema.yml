@@ -1,0 +1,115 @@
+openapi: 3.0.3
+info:
+  title: CNAB PARSE API
+  version: 1.0.0
+  description: Server designed to obtain parsing data from CNAB files
+paths:
+  /api/transactions/:
+    get:
+      operationId: transactions_list
+      tags:
+      - transactions
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+          description: ''
+    post:
+      operationId: transactions_create
+      tags:
+      - transactions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transaction'
+          description: ''
+components:
+  schemas:
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        type:
+          $ref: '#/components/schemas/TypeEnum'
+        date:
+          type: string
+          format: date
+        value:
+          type: string
+          maxLength: 10
+        cpf:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,11}(?:\.\d{0,0})?$
+        card:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,12}(?:\.\d{0,0})?$
+        hour:
+          type: string
+          format: time
+        owner_store:
+          type: string
+          maxLength: 14
+        name_store:
+          type: string
+          maxLength: 19
+      required:
+      - card
+      - cpf
+      - date
+      - hour
+      - id
+      - name_store
+      - owner_store
+      - type
+      - value
+    TypeEnum:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

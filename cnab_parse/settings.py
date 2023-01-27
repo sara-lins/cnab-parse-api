@@ -44,10 +44,22 @@ THIRD_PARTY_APPS = [
 ]
 
 MY_APPS = [
-    "transactions"
+    "transactions",
+    'drf_spectacular',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'CNAB PARSE API',
+    'DESCRIPTION': 'Server designed to obtain parsing data from CNAB files',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
