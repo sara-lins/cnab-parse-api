@@ -6,6 +6,10 @@ Servidor elaborado para obter dados de parseamento de arquivos CNAB (Centro Naci
 
 Server designed to obtain parsing data from CNAB files (National Banking Automation Center)
 
+Endpoint API: https://cnab-parse-api.onrender.com/api/transactions/
+
+Documentation: https://cnab-parse-api.onrender.com/api/docs/redoc/
+
 ## Instalação dos pacotes (Installation of packages)
 
 - Crie seu ambiente virtual (Create your virtual environment):
