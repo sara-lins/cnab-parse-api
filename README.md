@@ -6,6 +6,8 @@ Servidor elaborado para obter dados de parseamento de arquivos CNAB (Centro Naci
 
 Server designed to obtain parsing data from CNAB files (National Banking Automation Center)
 
+Tecnologias (technologies): Python, Django REST Framework, UUID, PostgreSQL.
+
 Endpoint API: https://cnab-parse-api.onrender.com/api/transactions/
 
 Documentation: https://cnab-parse-api.onrender.com/api/docs/redoc/
